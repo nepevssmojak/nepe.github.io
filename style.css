@@ -221,3 +221,8 @@ h2{
   .grid2{ grid-template-columns: 1fr; }
   h1{ font-size: 30px; }
 }
+a, a:visited{
+  color: #b30000;     /* blood red */
+  font-weight: 800;
+  text-decoration: none;
+}
