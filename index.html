@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>NEPE ($NEPE)</title>
+  <meta name="description" content="NEPE — The bulletproof meme frog." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- Matrix background -->
+  <canvas id="matrix"></canvas>
+
+  <main class="wrap">
+    <header class="hero">
+      <div class="badge">LIVE</div>
+
+      <h1 class="titleRow">
+  NEPE <span class="muted">($NEPE)</span>
+  <img src="nepe1.png" alt="NEPE logo" class="coinLogo">
+</h1>
+
+
+      <p class="tagline">
+  Nepe could've stayed free<br>
+  Nepe chose to come back into the matrix to save the boys
+</p>
+
+      <div class="ctaRow">
+        <a class="chip" href="YOUR_DEX_LINK" target="_blank" rel="noreferrer">Buy NEPE</a>
+        <a class="chip" href="https://x.com/nepefrog" target="_blank" rel="noreferrer">X</a>
+        <a class="chip" href="https://t.me/pepevssmojak" target="_blank" rel="noreferrer">Telegram</a>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2>What is NEPE?</h2>
+    <p>NEPE is Pepe after the red pill.</p>
+<p>The Pepe that woke up inside the system.</p>
+<p>Where Pepe used to laugh at the chaos, NEPE understands it.</p>
+<p>The algorithms. The manipulation.</p>
+<p>The endless loops of pump, dump, repeat.</p>
+<p>NEPE exists for those who see the patterns.</p>
+<p>
+  NEPE exists for those who want to end 
+  <a href="https://YOUR-LINK-HERE.com" target="_blank" rel="noreferrer">
+    SMOJAK
+  </a>
+  's slave system forever.
+</p>
+    </section>
+
+    <section class="card">
+      <h2>Why NEPE?</h2>
+      <ul class="rules">
+        <li>Fair launch — no early wallets</li>
+        <li>Community driven</li>
+        <li>Built for speed and volatility</li>
+        <li>Meme energy first, utility later</li>
+      </ul>
+    </section>
+
+    <footer class="footer small">
+      <p class="muted">
+        Meme coins are volatile. Trade responsibly.
+      </p>
+    </footer>
+  </main>
+
+  <script>
+    // =========================
+    // Matrix background
+    // =========================
+    (() => {
+      const canvas = document.getElementById("matrix");
+      const ctx = canvas.getContext("2d");
+
+      const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+      const charArr = chars.split("");
+      const fontSize = 16;
+      const fade = 0.07;
+
+      function resize() {
+        const dpr = window.devicePixelRatio || 1;
+        canvas.width = window.innerWidth * dpr;
+        canvas.height = window.innerHeight * dpr;
+        canvas.style.width = window.innerWidth + "px";
+        canvas.style.height = window.innerHeight + "px";
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+
+      resize();
+      window.addEventListener("resize", resize);
+
+      let columns = Math.floor(window.innerWidth / fontSize);
+      let drops = Array(columns).fill(1);
+
+      function step() {
+        ctx.fillStyle = `rgba(0,0,0,${fade})`;
+        ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+
+        ctx.fillStyle = "#00ff66";
+        ctx.font = `${fontSize}px monospace`;
+
+        for (let i = 0; i < drops.length; i++) {
+          const text = charArr[(Math.random() * charArr.length) | 0];
+          ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+          if (drops[i] * fontSize > window.innerHeight && Math.random() > 0.975) {
+            drops[i] = 0;
+          }
+          drops[i]++;
+        }
+
+        requestAnimationFrame(step);
+      }
+
+      step();
+    })();
+  </script>
+</body>
+</html>
